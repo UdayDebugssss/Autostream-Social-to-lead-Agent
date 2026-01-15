@@ -1,0 +1,7 @@
+langchain==0.1.16
+langchain-community==0.0.34
+langchain-openai==0.0.8
+openai>=1.10.0
+chromadb==0.4.22
+tiktoken
+python-dotenv
