@@ -42,4 +42,14 @@ The agent maintains conversation state across *5-6 turns* using:
 2. *Explicit state tracking*: Lead collection progress stored in session variables
 3. *RAG context caching*: Frequently accessed knowledge base items for performance
 
+## WhatsApp Integration Using Webhooks
+
+- Incoming WhatsApp messages are sent by Meta to a configured webhook endpoint hosted using FastAPI or Flask. This webhook extracts the user’s message text and forwards it to the AutoStream LangChain agent’s process_message() function.
+
+- Each WhatsApp user session is identified using the sender’s phone number, which allows the system to maintain conversation state and memory across multiple messages using LangChain’s ConversationBufferMemory.
+
+- The agent processes the message, performs intent detection, retrieves relevant information from the local knowledge base (RAG), or triggers lead capture when high intent is detected. The generated response is then sent back to the user via the WhatsApp Cloud API.
+
+- This architecture keeps the agent logic independent of the communication channel, making it easy to extend the same agent to other platforms such as web chat or Instagram DMs.
+
 ### *System Flow*
